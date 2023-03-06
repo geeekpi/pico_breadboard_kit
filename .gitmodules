@@ -1,0 +1,6 @@
+[submodule "components/lvgl"]
+	path = components/lvgl
+	url = https://github.com/lvgl/lvgl
+[submodule "components/FreeRTOS"]
+	path = components/FreeRTOS
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel
