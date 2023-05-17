@@ -48,7 +48,7 @@ sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-n
 * Download Repository 
 ```bash
 cd /home/pi/
-git clone https://github.com/geeekpi/pico_breakboard_kit.git
+git clone --recursive https://github.com/geeekpi/pico_breakboard_kit.git
 ```
 
 * Build Projects
