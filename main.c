@@ -30,7 +30,6 @@ lv_obj_t *img1 = NULL; // 开机图片
 
 lv_obj_t *led1 = NULL;
 lv_obj_t *led2 = NULL;
-lv_obj_t *led3 = NULL;
 
 lv_obj_t *jy_label = NULL;
 
@@ -105,10 +104,6 @@ void gpio_callback(uint gpio, uint32_t events)
         lv_led_toggle(led2);
         gpio_xor_mask(1ul << 17);
         break;
-    case 22:
-        lv_led_toggle(led3);
-        gpio_xor_mask((1ul << 16) | (1ul << 17));
-        break;
     }
 }
 
@@ -170,22 +165,16 @@ static void hw_handler(lv_event_t *e)
         gpio_set_irq_enabled_with_callback(22, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
 
         led1 = lv_led_create(lv_scr_act());
-        lv_obj_align(led1, LV_ALIGN_TOP_MID, -60, 400);
+        lv_obj_align(led1, LV_ALIGN_TOP_MID, -30, 400);
         lv_led_set_color(led1, lv_palette_main(LV_PALETTE_RED));
 
         lv_led_off(led1);
 
         led2 = lv_led_create(lv_scr_act());
-        lv_obj_align(led2, LV_ALIGN_TOP_MID, 0, 400);
+        lv_obj_align(led2, LV_ALIGN_TOP_MID, 30, 400);
         lv_led_set_color(led2, lv_palette_main(LV_PALETTE_GREEN));
 
         lv_led_off(led2);
-
-        led3 = lv_led_create(lv_scr_act());
-        lv_obj_align(led3, LV_ALIGN_TOP_MID, 60, 400);
-        lv_led_set_color(led3, lv_palette_main(LV_PALETTE_BLUE));
-
-        lv_led_off(led3);
 
         gpio_init(16);
         gpio_init(17);
