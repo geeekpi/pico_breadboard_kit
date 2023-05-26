@@ -56,7 +56,7 @@ git clone --recursive https://github.com/geeekpi/pico_breakboard_kit.git
 cd pico_breakboard_kit/
 mkdir build
 cd build/
-cmake ..
+cmake --no-warn-unused-cli -DPICO_OPTIMIZED_DEBUG=1 -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug ../
 make -j4
 ```
 
