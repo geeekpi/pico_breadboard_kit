@@ -19,7 +19,7 @@ This is Full Demo Code for Pico Breakboard Kit with 3.5" TFT Capacitive Touch Sc
 
 ### TFT screen Pinout
 |Raspberry Pi Pico | 3.5 TFT Screen |
-:---:---:
+|---|---|
 | GP2 | CLK |
 | GP3 | DIN |
 | GP5 | CS |
@@ -27,7 +27,7 @@ This is Full Demo Code for Pico Breakboard Kit with 3.5" TFT Capacitive Touch Sc
 | GP7 | RST |
 ### Touch Screen Pinout
 |Raspberry Pi Pico | Capacitive Touch screen |
-:---:---:
+|---|---|
 | I2C0 SDA GP8 | SDA |
 | I2C0 SCL GP9 | SCL |
 
