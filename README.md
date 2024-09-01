@@ -36,8 +36,8 @@ This is Full Demo Code for Pico Breakboard Kit with 3.5" TFT Capacitive Touch Sc
 ```bash 
 export FREERTOS_KERNEL_PATH=~/pico_breakboard_kit/components/FreeRTOS
 # ARM (You can only choose one.)
-cmake -DCMAKE_BUILD_TYPE=Debug -DPICO_PLATFORM=rp2350-riscv -DPICO_BOARD=pico2 -DPICO_RP2350=1 FREERTOS_KERNEL_PATH=~/pico_breakboard_kit/components/FreeRTOS ..
-# RISC-V
+cmake -DCMAKE_BUILD_TYPE=Debug -DPICO_PLATFORM=rp2350 -DPICO_BOARD=pico2 -DPICO_RP2350=1 FREERTOS_KERNEL_PATH=~/pico_breakboard_kit/components/FreeRTOS ..
+# RISC-V (need build toolchain by yourself!)
 # cmake -DCMAKE_BUILD_TYPE=Debug -DPICO_PLATFORM=rp2350-riscv -DPICO_BOARD=pico2 -DPICO_RP2350=1 FREERTOS_KERNEL_PATH=~/pico_breakboard_kit/components/FreeRTOS ..
 make
 ```
