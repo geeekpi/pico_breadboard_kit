@@ -288,11 +288,11 @@ int main()
     TaskHandle_t task0_Handle = NULL;
 
     xTaskCreate(task0, "task0", 2048, NULL, 1, &task0_Handle);
-    vTaskCoreAffinitySet(task0_Handle, task0_CoreAffinityMask);
+    //TaskCoreAffinitySet(task0_Handle, task0_CoreAffinityMask);
 
     TaskHandle_t task1_Handle = NULL;
     xTaskCreate(task1, "task1", 2048, NULL, 2, &task1_Handle);
-    vTaskCoreAffinitySet(task1_Handle, task1_CoreAffinityMask);
+    //vTaskCoreAffinitySet(task1_Handle, task1_CoreAffinityMask);
 
     vTaskStartScheduler();
 

@@ -106,7 +106,7 @@
 #define configTICK_CORE                         0
 #define configRUN_MULTIPLE_PRIORITIES           1
 
-#define configUSE_CORE_AFFINITY                 1
+// #define configUSE_CORE_AFFINITY                 1
 
 
 /* RP2040 specific */
@@ -135,6 +135,14 @@ to exclude the API function. */
 #define INCLUDE_xTaskGetHandle                  1
 #define INCLUDE_xTaskResumeFromISR              1
 #define INCLUDE_xQueueGetMutexHolder            1
+
+#if PICO_RP2350
+#define configENABLE_MPU                        0
+#define configENABLE_TRUSTZONE                  0
+#define configRUN_FREERTOS_SECURE_ONLY          1
+#define configENABLE_FPU                        1
+#define configMAX_SYSCALL_INTERRUPT_PRIORITY    16
+#endif
 
 /* A header file that defines trace macro can be included here. */
 
