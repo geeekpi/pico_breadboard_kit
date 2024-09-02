@@ -1,6 +1,6 @@
-# pico_breakboard_kit
+# pico_breadboard_kit
 ## Description
-This is Full Demo Code for Pico Breakboard Kit with 3.5" TFT Capacitive Touch Screen
+This is Full Demo Code for Pico Breadboard Kit with 3.5" TFT Capacitive Touch Screen
 ## TFT Features
 * Resolution: 320x480 Pixels
 * Screen IC: ST7796SU1
@@ -72,12 +72,12 @@ sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-n
 * Download Repository 
 ```bash
 cd /home/pi/
-git clone --recursive https://github.com/geeekpi/pico_breakboard_kit.git
+git clone --recursive https://github.com/geeekpi/pico_breadboard_kit.git
 ```
 
 * Build Projects
 ```bash
-cd pico_breakboard_kit/
+cd pico_breadboard_kit/
 mkdir build
 cd build/
 cmake --no-warn-unused-cli -DPICO_OPTIMIZED_DEBUG=1 -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug ../
