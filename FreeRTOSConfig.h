@@ -142,6 +142,7 @@ to exclude the API function. */
 #define configRUN_FREERTOS_SECURE_ONLY          1
 #define configENABLE_FPU                        1
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY    16
+#define configNUMBER_OF_CORES                   1
 #endif
 
 /* A header file that defines trace macro can be included here. */

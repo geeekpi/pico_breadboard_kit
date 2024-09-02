@@ -160,6 +160,15 @@ static void hw_handler(lv_event_t *e)
         ws2812_program_init(pio, sm, offset, 12, 800000, true);
         put_pixel(urgb_u32(0, 0, 0));
 
+#if PICO_RP2350
+        gpio_init(14);
+        gpio_init(15);
+        gpio_init(22);
+        
+        gpio_set_dir(14, GPIO_IN);
+        gpio_set_dir(15, GPIO_IN);
+        gpio_set_dir(22, GPIO_IN);
+#endif
         gpio_set_irq_enabled_with_callback(14, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
         gpio_set_irq_enabled_with_callback(15, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
         gpio_set_irq_enabled_with_callback(22, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
