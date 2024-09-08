@@ -15,6 +15,7 @@
 #include "hardware/i2c.h"
 #include "hardware/gpio.h"
 
+#include <pico/binary_info.h>
 #include <stdio.h>
 
 /*********************
@@ -108,6 +109,11 @@ static void touchpad_init(void)
         gt911_status.i2c_dev_addr = GT911_I2C_SLAVE_ADDR;
         uint8_t data_buf;
 
+        bi_decl_if_func_used(bi_program_feature("Capacitive Touch (I2C0)"))
+        bi_decl_if_func_used(bi_2pins_with_func(8, 9, GPIO_FUNC_I2C))
+        bi_decl_if_func_used(bi_2pins_with_names(8, "Touch", 9, "Touch"))
+        bi_decl_if_func_used(bi_2pins_with_names(10, "RST, Touch", 11, "INT, Touch"))
+      
         i2c_init(i2c0, 100 * 1000);
         gpio_set_function(8 /* SDA */, GPIO_FUNC_I2C);
         gpio_set_function(9 /* SCL */, GPIO_FUNC_I2C);

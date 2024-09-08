@@ -10,6 +10,7 @@
  *      INCLUDES
  *********************/
 #include "lv_port_disp.h"
+#include <pico/binary_info.h>
 #include <stdbool.h>
 
 #include "pico/stdlib.h"
@@ -223,6 +224,11 @@ static void disp_init(void)
 		{0, {0}, 0xff},
 	};
 
+    bi_decl_if_func_used(bi_program_feature("TFT 480x320 (SPI0)"))
+    bi_decl_if_func_used(bi_3pins_with_func(gpio_clk, gpio_din, gpio_cs, GPIO_FUNC_SPI))
+    bi_decl_if_func_used(bi_4pins_with_names(gpio_clk, "TFT (SCLK)", gpio_din, "TFT (MOSI)", 4, "TFT (MISO)", gpio_cs, "TFT (CS)")) 
+    bi_decl_if_func_used(bi_2pins_with_names(gpio_dc, "TFT (DC)", gpio_rst, "TFT (RST)"))
+    
     spi_init(spi0, 62.5 * 1000 * 1000);
     spi_set_format(spi0, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
 

@@ -120,6 +120,8 @@ static void hw_handler(lv_event_t *e)
         vTaskDelay(100 / portTICK_PERIOD_MS);
 
         // 蜂鸣器
+        bi_decl_if_func_used(bi_program_feature("Buzzer"))
+        bi_decl_if_func_used(bi_1pin_with_name(13, "Buzzer"))
         gpio_init(13);
         gpio_set_dir(13, GPIO_OUT);
 
@@ -155,11 +157,17 @@ static void hw_handler(lv_event_t *e)
         // todo get free sm
         PIO pio = pio0;
         int sm = 0;
+        
+        bi_decl_if_func_used(bi_program_feature("RGB LED 1x (WS2012, PIO0)"));
+        bi_decl_if_func_used(bi_1pin_with_func(12, GPIO_FUNC_PIO0));
+        bi_decl_if_func_used(bi_1pin_with_name(12, "RGB LED"));
+    
         uint offset = pio_add_program(pio, &ws2812_program);
-
         ws2812_program_init(pio, sm, offset, 12, 800000, true);
         put_pixel(urgb_u32(0, 0, 0));
 
+        bi_decl_if_func_used(bi_program_feature("User Buttons"))
+        bi_decl_if_func_used(bi_2pins_with_names(15, "Button 1", 14, "Button 2"))
         gpio_set_irq_enabled_with_callback(14, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
         gpio_set_irq_enabled_with_callback(15, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
         gpio_set_irq_enabled_with_callback(22, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
@@ -176,6 +184,10 @@ static void hw_handler(lv_event_t *e)
 
         lv_led_off(led2);
 
+        bi_decl_if_func_used(bi_program_feature("USER LEDs (2x)"))
+        bi_decl_if_func_used(bi_1pin_with_name(16, "LED1 (blue)"))
+        bi_decl_if_func_used(bi_1pin_with_name(17, "LED2 (blue)"))
+    
         gpio_init(16);
         gpio_init(17);
 
@@ -237,6 +249,9 @@ void task0(void *pvParam)
         if (adc_en)
         {
             adc_init();
+            bi_decl_if_func_used(bi_program_feature("Joystick 2-axis (ADC0, ADC1)"))
+            bi_decl_if_func_used(bi_1pin_with_name(26, "X-axis (ADC0)"))
+            bi_decl_if_func_used(bi_1pin_with_name(27, "Y-axis (ADC1)"))
             // Make sure GPIO is high-impedance, no pullups etc
             adc_gpio_init(26);
             adc_gpio_init(27);
