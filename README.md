@@ -1,6 +1,6 @@
-# pico_breakboard_kit
+# pico_breadboard_kit
 ## Description
-This is Full Demo Code for Pico Breakboard Kit with 3.5" TFT Capacitive Touch Screen
+This is Full Demo Code for Pico Breadboard Kit with 3.5" TFT Capacitive Touch Screen
 ## TFT Features
 * Resolution: 320x480 Pixels
 * Screen IC: ST7796SU1
@@ -9,27 +9,30 @@ This is Full Demo Code for Pico Breakboard Kit with 3.5" TFT Capacitive Touch Sc
 * TFT screen communication protocol: SPI (SPI0)
 * TFT Capacitive touch screen communication protocol: I2C (I2C0 SDA: GP8, SCL: GP9)
 ## Pinout 
-| Components | Pinout|
-|---|---|
-| Buzzer | GP13 |
-| LEDs | D1: GP16, D2: GP17, D3: 3V3, D4: 5V |
-| RGB LED| GP12|
-| Joystick| X-axis: ADC0, Y-axis: ADC1 
-|Button | BTN1: GP15, BTN2: GP14|
+| Components | Pinout                              |
+|------------|-------------------------------------|
+| Buzzer     | GP13                                |
+| LEDs       | D1: GP16, D2: GP17, D3: 3V3, D4: 5V |
+| RGB LED    | GP12                                |
+| Joystick   | X-axis: ADC0, Y-axis: ADC1          |
+| Button     | BTN1: GP15, BTN2: GP14              |
 
 ### TFT screen Pinout
 |Raspberry Pi Pico | 3.5 TFT Screen |
-|---|---|
-| GP2 | CLK |
-| GP3 | DIN |
-| GP5 | CS |
-| GP6 | DC |
-| GP7 | RST |
+|------------------|----------------|
+| GP2              | CLK            |
+| GP3              | MOSI           |
+| GP4              | MISO           |
+| GP5              | CS             |
+| GP6              | DC             |
+| GP7              | RST            |
 ### Touch Screen Pinout
 |Raspberry Pi Pico | Capacitive Touch screen |
-|---|---|
-| I2C0 SDA GP8 | SDA |
-| I2C0 SCL GP9 | SCL |
+|------------------|-------------------------|
+| I2C0 SDA GP8     | SDA                     |
+| I2C0 SCL GP9     | SCL                     |
+| GP10             | RST                     |
+| GP11             | INT                     |
 
 ## Getting Start
 * Install Pico-SDK in Raspberry Pi 
@@ -72,12 +75,12 @@ sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-n
 * Download Repository 
 ```bash
 cd /home/pi/
-git clone --recursive https://github.com/geeekpi/pico_breakboard_kit.git
+git clone --recursive https://github.com/geeekpi/pico_breadboard_kit.git
 ```
 
 * Build Projects
 ```bash
-cd pico_breakboard_kit/
+cd pico_breadboard_kit/
 mkdir build
 cd build/
 cmake --no-warn-unused-cli -DPICO_OPTIMIZED_DEBUG=1 -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug ../
