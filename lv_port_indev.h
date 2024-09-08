@@ -26,9 +26,14 @@ extern "C" {
 /**********************
  *      TYPEDEFS
  **********************/
-#define GT911_I2C_SLAVE_ADDR   0x5D
+#define GT911_I2C_SLAVE_ADDR          0x5D
 
-#define GT911_PRODUCT_ID_LEN   4
+#define GT911_PRODUCT_ID_LEN          4
+/* Configuration Register Map of GT911; R/W registers */
+#define GT911_CFG_BASE_ADDRESS        0x8047 // first configuration register
+#define GT911_CFG_CHECKSUM            0x80FF // configuration CRC of 0x8047 to 0x80fE
+#define GT911_CFG_FRESH               0x8100 // config update flag; written by host when config shall be activated/stored persistently
+#define GT911_CFG_END_ADDRESS         0x8100 // last configuration register
 
 /* Register Map of GT911 */
 #define GT911_PRODUCT_ID1             0x8140
@@ -44,11 +49,11 @@ extern "C" {
 #define GT911_VENDOR_ID               0x814A
 
 #define GT911_STATUS_REG              0x814E
-#define GT911_STATUS_REG_BUF        0x80
-#define GT911_STATUS_REG_LARGE      0x40
-#define GT911_STATUS_REG_PROX_VALID 0x20
-#define GT911_STATUS_REG_HAVEKEY    0x10
-#define GT911_STATUS_REG_PT_MASK    0x0F
+#define GT911_STATUS_REG_BUF          0x80
+#define GT911_STATUS_REG_LARGE        0x40
+#define GT911_STATUS_REG_PROX_VALID   0x20
+#define GT911_STATUS_REG_HAVEKEY      0x10
+#define GT911_STATUS_REG_PT_MASK      0x0F
 
 #define GT911_TRACK_ID1               0x814F
 #define GT911_PT1_X_COORD_L           0x8150

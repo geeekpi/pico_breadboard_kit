@@ -20,6 +20,7 @@
 /*********************
  *      DEFINES
  *********************/
+#define PRINT_GT911_CONFIG // Prints device configuration after initialization. Comment out to disable printing.
 
 /**********************
  *      TYPEDEFS
@@ -100,6 +101,22 @@ int gt911_i2c_read(uint8_t slave_addr, uint16_t register_addr, uint8_t *data_buf
  * Touchpad
  * -----------------*/
 
+/*Prints GT911 configuration block*/
+#if defined(PRINT_GT911_CONFIG)
+static void print_config(void)
+{
+    uint8_t config[GT911_CFG_END_ADDRESS - GT911_CFG_BASE_ADDRESS + 1] = { 0 };
+    gt911_i2c_read(gt911_status.i2c_dev_addr, GT911_CFG_BASE_ADDRESS, config, sizeof(config));
+
+    printf("device configuration from 0x%04hX to 0x%04hX:\n", GT911_CFG_BASE_ADDRESS, GT911_CFG_END_ADDRESS);
+    for(int idx = 1; idx <= sizeof(config); idx++)
+    {
+        printf("%02hhX ", config[idx - 1]);
+        if(0 == (idx % 6)) { printf(": 0x%04hX - 0x%04hX\n", GT911_CFG_BASE_ADDRESS + idx - 6, GT911_CFG_BASE_ADDRESS + idx - 1); }
+    }
+}
+#endif
+
 /*Initialize your touchpad*/
 static void touchpad_init(void)
 {
@@ -137,6 +154,10 @@ static void touchpad_init(void)
         gt911_i2c_read(gt911_status.i2c_dev_addr, GT911_Y_COORD_RES_H, &data_buf, 1);
         gt911_status.max_y_coord |= ((uint16_t)data_buf << 8);
         gt911_status.inited = true;
+
+#if defined(PRINT_GT911_CONFIG)
+        static void print_config(void);
+#endif
     }
 }
 
